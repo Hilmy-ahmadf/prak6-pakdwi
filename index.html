@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Registrasi</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form Registrasi</h1>
+    <form name="registrationForm" onSubmit="validate(event)" method="post">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama"><span id="namaError" class="error"></span><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><span id="usernameError" class="error"></span><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><span id="emailError" class="error"></span><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="noTelepon">No Telepon:</label>
+        <input type="tel" id="noTelepon" name="noTelepon"><br><br>
+
+        <label for="jenisKelamin">Jenis Kelamin:</label>
+        <input type="radio" id="lakiLaki" name="jenisKelamin" value="Laki-Laki">
+        <label for="lakiLaki">Laki-Laki</label>
+        <input type="radio" id="perempuan" name="jenisKelamin" value="Perempuan">
+        <label for="perempuan">Perempuan</label><br><br>
+
+        <label>Alamat Website :</label>
+
+        <input type="alamatweb" name="alamatweb" id="alamatweb" />
+        <input type="submit" value="Submit" class="Submit" onclick="validate">
+    </form>
+
+    <script>
+        function validate(event) {
+            event.preventDefault();
+            var form = document.forms["registrationForm"];
+            var nama = form.elements["nama"].value;
+            var username = form.elements["username"].value;
+            var email = form.elements["email"].value;
+            var password = form.elements["password"].value;
+            var telepon = form.elements["noTelepon"].value;
+            var gender = form.elements["jenisKelamin"].value;
+            var alamatweb = form.elements["alamatweb"].value;
+
+            if (nama == "" && username == "" && email == "") {
+                alert("Masukkan Nama, Username, dan Email Anda");
+            }
+            else if (nama == "") {
+                alert("Masukkan nama Anda");
+            }
+            else if (username == "") {
+                alert("Masukkan Username");
+            }
+            else if (email == "" || form.email.value.indexOf('@', 0, '.') == -1) {
+                alert("Masukkan Email");
+            }
+            else if (password == "") {
+                confirm("Masukkan Password Anda");
+            }
+            else {
+                confirm("Selamat, Anda Telah Berhasil Melakukan Resgistrasi");
+            }
+        }
+    </script>
+</body>
+
+</html>
